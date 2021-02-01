@@ -27,23 +27,20 @@ if File.exists?(".gitignore")
     "\n"                   +
     "/public/packs\n"      +
     "/public/packs-test\n" +
-    "/node_modules\n"      +
-    "/yarn-error.log\n"    +
-    "yarn-debug.log*\n"    +
-    ".yarn-integrity\n"
+    "/node_modules\n"      
   end
 end
 
 if Webpacker::VERSION =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
   say "Installing all JavaScript dependencies [#{Webpacker::VERSION}]"
-  run "yarn add @rails/webpacker@#{Webpacker::VERSION}"
+  run "npm install --save-dev @rails/webpacker@#{Webpacker::VERSION}"
 else
   say "Installing all JavaScript dependencies [from prerelease rails/webpacker]"
-  run "yarn add @rails/webpacker@next"
+  run "npm install --save-dev @rails/webpacker@next"
 end
 
 say "Installing dev server for live reloading"
-run "yarn add --dev webpack-dev-server"
+run "npm install --save-dev webpack-dev-server"
 
 if Rails::VERSION::MAJOR == 5 && Rails::VERSION::MINOR > 1
   say "You need to allow webpack-dev-server host as allowed origin for connect-src.", :yellow

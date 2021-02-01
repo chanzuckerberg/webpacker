@@ -1,15 +1,7 @@
 $stdout.sync = true
 
-def yarn_install_available?
-  rails_major = Rails::VERSION::MAJOR
-  rails_minor = Rails::VERSION::MINOR
-
-  rails_major > 5 || (rails_major == 5 && rails_minor >= 1)
-end
-
 def enhance_assets_precompile
-  # yarn:install was added in Rails 5.1
-  deps = yarn_install_available? ? [] : ["webpacker:yarn_install"]
+  deps = ["webpacker:npm_install"]
   Rake::Task["assets:precompile"].enhance(deps) do
     Rake::Task["webpacker:compile"].invoke
   end
@@ -38,6 +30,6 @@ unless skip_webpacker_precompile
   if Rake::Task.task_defined?("assets:precompile")
     enhance_assets_precompile
   else
-    Rake::Task.define_task("assets:precompile" => ["webpacker:yarn_install", "webpacker:compile"])
+    Rake::Task.define_task("assets:precompile" => ["webpacker:npm_install", "webpacker:compile"])
   end
 end

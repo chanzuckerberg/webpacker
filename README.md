@@ -20,31 +20,23 @@ in which case you may not even need the asset pipeline. This is mostly relevant 
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Features](#features)
-- [Installation](#installation)
-  - [Usage](#usage)
-  - [Development](#development)
-  - [Webpack Configuration](#webpack-configuration)
-  - [Custom Rails environments](#custom-rails-environments)
-  - [Upgrading](#upgrading)
-- [Integrations](#integrations)
-  - [React](./docs/integrations.md#react)
-  - [Angular with TypeScript](./docs/integrations.md#angular-with-typescript)
-  - [Vue](./docs/integrations.md#vue)
-  - [Elm](./docs/integrations.md#elm)
-  - [Stimulus](./docs/integrations.md#stimulus)
-  - [Svelte](./docs/integrations.md#svelte)
-  - [Typescript](./docs/typescript.md)
-  - [CoffeeScript](./docs/integrations.md#coffeescript)
-  - [Erb](./docs/integrations.md#erb)
-- [Paths](#paths)
-  - [Resolved](#resolved)
-  - [Watched](#watched)
-- [Deployment](#deployment)
-- [Docs](#docs)
-- [Contributing](#contributing)
-- [License](#license)
+- [Webpacker](#webpacker)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Features](#features)
+  - [Installation](#installation)
+    - [Usage](#usage)
+    - [Development](#development)
+    - [Webpack Configuration](#webpack-configuration)
+    - [Custom Rails environments](#custom-rails-environments)
+    - [Upgrading](#upgrading)
+  - [Integrations](#integrations)
+  - [Paths](#paths)
+    - [Resolved](#resolved)
+  - [Deployment](#deployment)
+  - [Docs](#docs)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -87,8 +79,8 @@ gem 'webpacker', '~> 5.x'
 
 # OR if you prefer to use master
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
-yarn add https://github.com/rails/webpacker.git
-yarn add core-js regenerator-runtime
+npm i --save-dev add https://github.com/rails/webpacker.git
+npm i --save-dev add core-js regenerator-runtime
 ```
 
 Finally, run the following to install Webpacker:
@@ -134,8 +126,8 @@ app/javascript:
 In `/packs/application.js`, include this at the top of the file:
 
 ```js
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 ```
 
 You can then link the JavaScript pack in Rails views using the `javascript_pack_tag` helper.
@@ -371,15 +363,15 @@ option available in `config/webpacker.yml`. This lets you
 add additional paths that webpack should lookup when resolving modules:
 
 ```yml
-additional_paths: ['app/assets']
+additional_paths: ["app/assets"]
 ```
 
 You can then import these items inside your modules like so:
 
 ```js
 // Note it's relative to parent directory i.e. app/assets
-import 'stylesheets/main'
-import 'images/rails.png'
+import "stylesheets/main";
+import "images/rails.png";
 ```
 
 **Note:** Please be careful when adding paths here otherwise it

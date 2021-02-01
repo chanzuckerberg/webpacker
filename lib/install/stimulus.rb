@@ -7,6 +7,6 @@ say "Creating controllers directory"
 directory "#{__dir__}/examples/stimulus/controllers", "#{Webpacker.config.source_path}/controllers"
 
 say "Installing all Stimulus dependencies"
-run "yarn add stimulus"
+run "npm install --save-dev stimulus"
 
 say "Webpacker now supports Stimulus.js 🎉", :green

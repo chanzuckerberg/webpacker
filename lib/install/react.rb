@@ -13,6 +13,7 @@ say "Updating webpack paths to include .jsx file extension"
 insert_into_file Webpacker.config.config_path, "- .jsx\n".indent(4), after: /\s+extensions:\n/
 
 say "Installing all react dependencies"
-run "yarn add react react-dom @babel/preset-react prop-types babel-plugin-transform-react-remove-prop-types"
+run "npm install react react-dom prop-types"
+run "npm install --save-dev @babel/preset-react babel-plugin-transform-react-remove-prop-types"
 
 say "Webpacker now supports react.js 🎉", :green

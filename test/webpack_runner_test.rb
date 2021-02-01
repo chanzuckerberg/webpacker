@@ -18,8 +18,8 @@ class WebpackRunnerTest < Webpacker::Test
     verify_command(cmd, use_node_modules: true)
   end
 
-  def test_run_cmd_via_yarn
-    cmd = ["yarn", "webpack", "--config", "#{test_app_path}/config/webpack/development.js"]
+  def test_run_cmd_via_npm
+    cmd = ["npx", "webpack", "--config", "#{test_app_path}/config/webpack/development.js"]
 
     verify_command(cmd, use_node_modules: false)
   end

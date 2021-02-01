@@ -7,7 +7,8 @@ say "Copying hello_angular app to #{Webpacker.config.source_path}"
 directory "#{__dir__}/examples/angular/hello_angular", "#{Webpacker.config.source_path}/hello_angular"
 
 say "Installing all angular dependencies"
-run "yarn add core-js zone.js rxjs @angular/core @angular/common @angular/compiler @angular/platform-browser @angular/platform-browser-dynamic"
+run "npm install core-js zone.js rxjs @angular/core @angular/common @angular/platform-browser @angular/platform-browser-dynamic"
+run "npm install --save-dev @angular/compiler"
 
 if Rails::VERSION::MAJOR == 5 && Rails::VERSION::MINOR > 1
   say "You need to enable unsafe-eval rule.", :yellow

@@ -6,7 +6,7 @@ class RakeTasksTest < Minitest::Test
     assert_includes output, "webpacker"
     assert_includes output, "webpacker:check_binstubs"
     assert_includes output, "webpacker:check_node"
-    assert_includes output, "webpacker:check_yarn"
+    assert_includes output, "webpacker:check_npm"
     assert_includes output, "webpacker:clean"
     assert_includes output, "webpacker:clobber"
     assert_includes output, "webpacker:compile"
@@ -33,18 +33,18 @@ class RakeTasksTest < Minitest::Test
     refute_includes output, "Webpacker requires Node.js"
   end
 
-  def test_check_yarn_version
-    output = Dir.chdir(test_app_path) { `rake webpacker:check_yarn 2>&1` }
-    refute_includes output, "Yarn not installed"
-    refute_includes output, "Webpacker requires Yarn"
+  def test_check_npm_version
+    output = Dir.chdir(test_app_path) { `rake webpacker:check_npm 2>&1` }
+    refute_includes output, "NPM not installed"
+    refute_includes output, "Webpacker requires NPM"
   end
 
-  def test_rake_webpacker_yarn_install_in_non_production_environments
+  def test_rake_webpacker_npm_install_in_non_production_environments
     assert_includes test_app_dev_dependencies, "right-pad"
 
     Webpacker.with_node_env("test") do
       Dir.chdir(test_app_path) do
-        `bundle exec rake webpacker:yarn_install`
+        `bundle exec rake webpacker:npm_install`
       end
     end
 
@@ -52,10 +52,10 @@ class RakeTasksTest < Minitest::Test
                     "Expected dev dependencies to be installed"
   end
 
-  def test_rake_webpacker_yarn_install_in_production_environment
+  def test_rake_webpacker_npm_install_in_production_environment
     Webpacker.with_node_env("production") do
       Dir.chdir(test_app_path) do
-        `bundle exec rake webpacker:yarn_install`
+        `bundle exec rake webpacker:npm_install`
       end
     end
 

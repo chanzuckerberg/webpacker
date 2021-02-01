@@ -92,7 +92,7 @@ class Webpacker::Compiler
       [
         *config.additional_paths_globbed,
         config.source_path_globbed,
-        "yarn.lock", "package.json",
+        "package-lock.json", "package.json",
         "config/webpack/**/*"
       ].freeze
     end

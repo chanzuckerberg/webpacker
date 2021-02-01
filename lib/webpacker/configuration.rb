@@ -63,10 +63,6 @@ class Webpacker::Configuration
     fetch(:extensions)
   end
 
-  def check_yarn_integrity=(value)
-    warn "Webpacker::Configuration#check_yarn_integrity=(value) has been deprecated. The integrity check has been removed from Webpacker so changing this setting will have no effect."
-  end
-
   def webpack_compile_output?
     fetch(:webpack_compile_output)
   end

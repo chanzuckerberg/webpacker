@@ -21,7 +21,7 @@ copy_file "#{__dir__}/examples/svelte/app.svelte",
   "#{Webpacker.config.source_path}/app.svelte"
 
 say "Installing all Svelte dependencies"
-run "yarn add svelte svelte-loader"
+run "npm install --save-dev svelte svelte-loader"
 
 say "Updating webpack paths to include .svelte file extension"
 insert_into_file Webpacker.config.config_path, "- .svelte\n".indent(4), after: /\s+extensions:\n/

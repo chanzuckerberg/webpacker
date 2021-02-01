@@ -10,7 +10,7 @@ module Webpacker
       cmd = if node_modules_bin_exist?
         ["#{@node_modules_bin_path}/webpack"]
       else
-        ["yarn", "webpack"]
+        ["npx", "webpack"]
       end
 
       if @argv.include?("--debug-webpacker")
