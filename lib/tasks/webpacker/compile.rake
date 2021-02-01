@@ -1,7 +1,7 @@
 $stdout.sync = true
 
 def enhance_assets_precompile
-  deps = ["webpacker:npm_install"]
+  deps = []
   Rake::Task["assets:precompile"].enhance(deps) do
     Rake::Task["webpacker:compile"].invoke
   end
@@ -30,6 +30,6 @@ unless skip_webpacker_precompile
   if Rake::Task.task_defined?("assets:precompile")
     enhance_assets_precompile
   else
-    Rake::Task.define_task("assets:precompile" => ["webpacker:npm_install", "webpacker:compile"])
+    Rake::Task.define_task("assets:precompile" => ["webpacker:compile"])
   end
 end

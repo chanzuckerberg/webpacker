@@ -9,7 +9,6 @@ tasks = {
   "webpacker:check_binstubs"          => "Verifies that webpack & webpack-dev-server are present",
   "webpacker:binstubs"                => "Installs Webpacker binstubs in this application",
   "webpacker:verify_install"          => "Verifies if Webpacker is installed",
-  "webpacker:npm_install"             => "Install all JavaScript dependencies as specified via NPM",
   "webpacker:install:react"           => "Installs and setup example React component",
   "webpacker:install:vue"             => "Installs and setup example Vue component",
   "webpacker:install:angular"         => "Installs and setup example Angular component",

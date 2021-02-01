@@ -39,30 +39,6 @@ class RakeTasksTest < Minitest::Test
     refute_includes output, "Webpacker requires NPM"
   end
 
-  def test_rake_webpacker_npm_install_in_non_production_environments
-    assert_includes test_app_dev_dependencies, "right-pad"
-
-    Webpacker.with_node_env("test") do
-      Dir.chdir(test_app_path) do
-        `bundle exec rake webpacker:npm_install`
-      end
-    end
-
-    assert_includes installed_node_module_names, "right-pad",
-                    "Expected dev dependencies to be installed"
-  end
-
-  def test_rake_webpacker_npm_install_in_production_environment
-    Webpacker.with_node_env("production") do
-      Dir.chdir(test_app_path) do
-        `bundle exec rake webpacker:npm_install`
-      end
-    end
-
-    refute_includes installed_node_module_names, "right-pad",
-                    "Expected only production dependencies to be installed"
-  end
-
   private
     def test_app_path
       File.expand_path("test_app", __dir__)
